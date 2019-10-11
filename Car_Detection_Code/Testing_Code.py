@@ -36,12 +36,14 @@ np.random.seed(42)
 colours = np.random.randint(0,255, size = (len(Labels),3), dtype = "uint8")
 
 #Loading the yolo detector from path
+
 print("[Message]Loading the yolo detector")
 net = cv.dnn.readNetFromDarknet(config_path,weights_path)
 ln = net.getLayerNames()
 ln = [ln[i[0]-1] for i in net.getUnconnectedOutLayers()]
 
 #Imput video to be predicted
+
 cap = cv.VideoCapture('videos/car.mp4')
 writer = None
 i = None
