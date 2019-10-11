@@ -15,9 +15,6 @@ drive = GoogleDrive(gauth)
 CONFIDENCE = 0.5
 con = 0.3
 THRESHOLD = 0.3
-weights_path = "yolo/yolov3.weights"
-config_path = "yolo/yolov3.cfg"
-label_path = "yolo/coco.names"
 Labels = open(label_path).read().strip().split("\n")
 motor_count = 0
 keep =0
@@ -72,17 +69,6 @@ while True:
 			scores = detection[5:]
 			classID = np.argmax(scores)
 			confidence = scores[classID]
-			
-			if confidence > CONFIDENCE:
-				box = detection[0:4] * np.array([W,H,W,H])
-				(centerX, centerY, width, height) = box.astype("int")
-				
-				x = int(centerX - (width/2))
-				y = int(centerY - (height/2))
-				
-				boxes.append( [x,y,int(width), int(height)])
-				confidences.append(float(confidence))
-				classIDs.append(classID)
 				
 	idxs = cv.dnn.NMSBoxes(boxes, confidences , CONFIDENCE , THRESHOLD)
 			
