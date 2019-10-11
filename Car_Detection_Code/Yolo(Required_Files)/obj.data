@@ -1,0 +1,5 @@
+classes= 33
+train  = /root/darknet/data/obj/train.txt 
+valid  = /root/darknet/data/obj/test.txt
+names = /root/darknet/cfg/obj.names  
+backup = backup/
